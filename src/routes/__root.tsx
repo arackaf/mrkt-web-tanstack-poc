@@ -60,6 +60,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               borderRight: "1px solid #ddd",
             }}
           >
+            <Link to="/">Home</Link>
+            <Link to="/roster">Roster</Link>
+            <hr style={{ width: "100%", border: 0, borderTop: "1px solid #ddd" }} />
             {Object.values(artistLookup).map((artist) => (
               <Link
                 key={artist.id}
