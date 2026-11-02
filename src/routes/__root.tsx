@@ -1,12 +1,15 @@
 import {
   HeadContent,
   Scripts,
+  Link,
   createRootRouteWithContext,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
+
+import { artistLookup } from "../lib/artist-lookup";
 
 import appCss from "../styles.css?url";
 
@@ -47,7 +50,28 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        {children}
+        <div style={{ display: "flex", minHeight: "100vh" }}>
+          <nav
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 8,
+              padding: 16,
+              borderRight: "1px solid #ddd",
+            }}
+          >
+            {Object.values(artistLookup).map((artist) => (
+              <Link
+                key={artist.id}
+                to="/$artistid/home"
+                params={{ artistid: artist.id }}
+              >
+                {artist.name}
+              </Link>
+            ))}
+          </nav>
+          <main style={{ flex: 1, padding: 16 }}>{children}</main>
+        </div>
         <TanStackDevtools
           config={{
             position: "bottom-right",
