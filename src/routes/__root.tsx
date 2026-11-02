@@ -62,6 +62,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           >
             <Link to="/">Home</Link>
             <Link to="/roster">Roster</Link>
+            <Link to="/cookies-next">Cookies Next</Link>
             <hr style={{ width: "100%", border: 0, borderTop: "1px solid #ddd" }} />
             {Object.values(artistLookup).map((artist) => (
               <Link

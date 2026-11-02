@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ArtistidRouteRouteImport } from './routes/$artistid/route'
+import { Route as CookiesNextRouteImport } from './routes/cookies-next'
 import { Route as RosterRouteImport } from './routes/roster'
 import { Route as ArtistidAudienceRouteImport } from './routes/$artistid/audience'
 import { Route as ArtistidHomeRouteImport } from './routes/$artistid/home'
@@ -25,6 +26,11 @@ const IndexRoute = IndexRouteImport.update({
 const ArtistidRouteRoute = ArtistidRouteRouteImport.update({
   id: '/$artistid',
   path: '/$artistid',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesNextRoute = CookiesNextRouteImport.update({
+  id: '/cookies-next',
+  path: '/cookies-next',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RosterRoute = RosterRouteImport.update({
@@ -56,6 +62,7 @@ const ArtistidProfileRoute = ArtistidProfileRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$artistid': typeof ArtistidRouteRouteWithChildren
+  '/cookies-next': typeof CookiesNextRoute
   '/roster': typeof RosterRoute
   '/$artistid/audience': typeof ArtistidAudienceRoute
   '/$artistid/home': typeof ArtistidHomeRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$artistid': typeof ArtistidRouteRouteWithChildren
+  '/cookies-next': typeof CookiesNextRoute
   '/roster': typeof RosterRoute
   '/$artistid/audience': typeof ArtistidAudienceRoute
   '/$artistid/home': typeof ArtistidHomeRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$artistid': typeof ArtistidRouteRouteWithChildren
+  '/cookies-next': typeof CookiesNextRoute
   '/roster': typeof RosterRoute
   '/$artistid/audience': typeof ArtistidAudienceRoute
   '/$artistid/home': typeof ArtistidHomeRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/$artistid'
+    | '/cookies-next'
     | '/roster'
     | '/$artistid/audience'
     | '/$artistid/home'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/$artistid'
+    | '/cookies-next'
     | '/roster'
     | '/$artistid/audience'
     | '/$artistid/home'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/$artistid'
+    | '/cookies-next'
     | '/roster'
     | '/$artistid/audience'
     | '/$artistid/home'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArtistidRouteRoute: typeof ArtistidRouteRouteWithChildren
+  CookiesNextRoute: typeof CookiesNextRoute
   RosterRoute: typeof RosterRoute
 }
 
@@ -131,6 +144,13 @@ declare module '@tanstack/react-router' {
       path: '/$artistid'
       fullPath: '/$artistid'
       preLoaderRoute: typeof ArtistidRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies-next': {
+      id: '/cookies-next'
+      path: '/cookies-next'
+      fullPath: '/cookies-next'
+      preLoaderRoute: typeof CookiesNextRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/roster': {
@@ -192,6 +212,7 @@ const ArtistidRouteRouteWithChildren = ArtistidRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArtistidRouteRoute: ArtistidRouteRouteWithChildren,
+  CookiesNextRoute: CookiesNextRoute,
   RosterRoute: RosterRoute,
 }
 export const routeTree = rootRouteImport
