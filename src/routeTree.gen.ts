@@ -17,6 +17,7 @@ import { Route as ArtistidAudienceRouteImport } from './routes/$artistid/audienc
 import { Route as ArtistidHomeRouteImport } from './routes/$artistid/home'
 import { Route as ArtistidMusicRouteImport } from './routes/$artistid/music'
 import { Route as ArtistidProfileRouteImport } from './routes/$artistid/profile'
+import { Route as ApiRosterRouteImport } from './routes/api/roster'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +59,11 @@ const ArtistidProfileRoute = ArtistidProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => ArtistidRouteRoute,
 } as any)
+const ApiRosterRoute = ApiRosterRouteImport.update({
+  id: '/api/roster',
+  path: '/api/roster',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/$artistid/home': typeof ArtistidHomeRoute
   '/$artistid/music': typeof ArtistidMusicRoute
   '/$artistid/profile': typeof ArtistidProfileRoute
+  '/api/roster': typeof ApiRosterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/$artistid/home': typeof ArtistidHomeRoute
   '/$artistid/music': typeof ArtistidMusicRoute
   '/$artistid/profile': typeof ArtistidProfileRoute
+  '/api/roster': typeof ApiRosterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/$artistid/home': typeof ArtistidHomeRoute
   '/$artistid/music': typeof ArtistidMusicRoute
   '/$artistid/profile': typeof ArtistidProfileRoute
+  '/api/roster': typeof ApiRosterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/$artistid/home'
     | '/$artistid/music'
     | '/$artistid/profile'
+    | '/api/roster'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/$artistid/home'
     | '/$artistid/music'
     | '/$artistid/profile'
+    | '/api/roster'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/$artistid/home'
     | '/$artistid/music'
     | '/$artistid/profile'
+    | '/api/roster'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   ArtistidRouteRoute: typeof ArtistidRouteRouteWithChildren
   CookiesNextRoute: typeof CookiesNextRoute
   RosterRoute: typeof RosterRoute
+  ApiRosterRoute: typeof ApiRosterRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ArtistidProfileRouteImport
       parentRoute: typeof ArtistidRouteRoute
     }
+    '/api/roster': {
+      id: '/api/roster'
+      path: '/api/roster'
+      fullPath: '/api/roster'
+      preLoaderRoute: typeof ApiRosterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -214,6 +234,7 @@ const rootRouteChildren: RootRouteChildren = {
   ArtistidRouteRoute: ArtistidRouteRouteWithChildren,
   CookiesNextRoute: CookiesNextRoute,
   RosterRoute: RosterRoute,
+  ApiRosterRoute: ApiRosterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
