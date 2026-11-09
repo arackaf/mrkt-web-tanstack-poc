@@ -13,6 +13,26 @@ export function getRouter() {
     scrollRestoration: true,
     defaultPreload: "intent",
     defaultPreloadStaleTime: 0,
+    rewrite: {
+      input: (input) => {
+        console.log("input", input.url.pathname);
+        const segments = input.url.pathname.split("/");
+        debugger;
+        if (segments[1] === "xxx") {
+          segments.splice(1, 1);
+        }
+        return new URL(input.url.origin + `/${segments.join("/")}${input.url.search}`);
+      },
+      output: (output) => {
+        console.log("output", output.url.pathname);
+        debugger;
+        const segments = output.url.pathname.split("/");
+        if (segments[1] !== "xxx") {
+          segments.splice(1, 0, "xxx");
+        }
+        return new URL(output.url.origin + `/${segments.join("/")}${output.url.search}`);
+      },
+    },
   });
 
   setupRouterSsrQueryIntegration({ router, queryClient: context.queryClient });
