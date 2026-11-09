@@ -20,7 +20,16 @@ const config = defineConfig({
       },
     ],
   },
-  plugins: [devtools(), nitro({ rollupConfig: { external: [/^@sentry\//] } }), tailwindcss(), tanstackStart(), viteReact()],
+  plugins: [
+    devtools(),
+    nitro({
+      rollupConfig: { external: [/^@sentry\//] },
+      routeRules: {},
+    }),
+    tailwindcss(),
+    tanstackStart(),
+    viteReact(),
+  ],
 });
 
 export default config;
