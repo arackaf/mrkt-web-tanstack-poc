@@ -8,7 +8,7 @@ export function getRouter() {
   const context = getContext();
 
   const router = createTanStackRouter({
-    basepath: "/c",
+    basepath: "/app",
     routeTree,
     context,
     scrollRestoration: true,
