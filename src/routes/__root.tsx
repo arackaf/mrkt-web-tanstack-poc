@@ -1,15 +1,10 @@
-import {
-  HeadContent,
-  Scripts,
-  Link,
-  createRootRouteWithContext,
-} from "@tanstack/react-router";
+import { HeadContent, Scripts, Link, createRootRouteWithContext } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 
 import TanStackQueryDevtools from "../integrations/tanstack-query/devtools";
 
-import { artistLookup } from "../lib/artist-lookup";
+import { artistLookup } from "@mrkt/src/lib/artist-lookup";
 
 import appCss from "../styles.css?url";
 
@@ -65,11 +60,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             <Link to="/cookies-next">Cookies Next</Link>
             <hr style={{ width: "100%", border: 0, borderTop: "1px solid #ddd" }} />
             {Object.values(artistLookup).map((artist) => (
-              <Link
-                key={artist.id}
-                to="/$artistid/home"
-                params={{ artistid: artist.id }}
-              >
+              <Link key={artist.id} to="/$artistid/home" params={{ artistid: artist.id }}>
                 {artist.name}
               </Link>
             ))}

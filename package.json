@@ -13,6 +13,7 @@
     "format": "npx prettier --write \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
+    "@mrkt/src": "workspace:*",
     "@mrkt/features": "workspace:*",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "0.10.14",

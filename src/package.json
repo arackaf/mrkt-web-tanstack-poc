@@ -1,0 +1,7 @@
+{
+  "name": "@mrkt/src",
+  "version": "9999.9.9",
+  "description": "App source for mrkt-web",
+  "private": true,
+  "license": "UNLICENSED"
+}

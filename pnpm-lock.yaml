@@ -11,6 +11,9 @@ importers:
       '@mrkt/features':
         specifier: workspace:*
         version: link:features/src
+      '@mrkt/src':
+        specifier: workspace:*
+        version: link:src
       '@tailwindcss/vite':
         specifier: ^4.1.18
         version: 4.3.5(vite@8.3.8(@types/node@22.20.5)(jiti@2.7.0))
@@ -77,6 +80,8 @@ importers:
         version: 8.3.8(@types/node@22.20.5)(jiti@2.7.0)
 
   features/src: {}
+
+  src: {}
 
 packages:
 

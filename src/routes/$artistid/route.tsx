@@ -1,5 +1,5 @@
 import { Outlet, createFileRoute } from "@tanstack/react-router";
-import { artistLookup } from "../../lib/artist-lookup";
+import { artistLookup } from "@mrkt/src/lib/artist-lookup";
 
 export const Route = createFileRoute("/$artistid")({
   component: ArtistLayout,
