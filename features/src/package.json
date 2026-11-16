@@ -1,0 +1,7 @@
+{
+  "name": "@mrkt/features",
+  "version": "9999.9.9",
+  "description": "Shared features for mrkt-web services",
+  "private": true,
+  "license": "UNLICENSED"
+}
